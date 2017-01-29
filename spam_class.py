@@ -20,8 +20,8 @@ def to_write_file(word_dict):
 
 def dict_creator_miner(file_url,id,stat):
 
-    default_word_dict={'stat':0,'id':0,'money': 0, 'guaranteed': 0, 'free': 0, 'subscribe': 0, 'girl': 0}
-    word_dict={'stat':0,'id':0,'money': 0, 'guaranteed': 0, 'free': 0, 'subscribe': 0, 'girl': 0}
+    default_word_dict={'stat': 0, 'money': 0, 'guaranteed': 0, 'free': 0, 'subscribe': 0, 'girl': 0, 'id': 0}
+    word_dict={'stat': 0, 'money': 0, 'guaranteed': 0, 'free': 0, 'subscribe': 0, 'girl': 0, 'id': 0}
     with open(file_name) as f:
         content = f.readlines()
 
