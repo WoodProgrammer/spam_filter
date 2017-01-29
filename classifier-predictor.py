@@ -54,9 +54,9 @@ clf = GaussianNB()
 
 clf.fit(X, Y)
 
-#x=np.array(dict_creator_miner("example.txt"))
-
-print(clf.predict([[0,0,0,1,1]]))
+x=np.array(dict_creator_miner("example.txt"))
+print x
+print(clf.predict([x]))
 
 
 '''
