@@ -17,10 +17,6 @@ def dict_creator_miner(file_url):
     for line in content:
 
         for key in word_dict:
-            if key=="id":
-                word_dict["id"]=id
-            elif key=="stat":
-                word_dict["stat"]=stat
             else:
                 money_match=re.search( r"{0}".format(key), line, re.M|re.I)
                 if money_match:
