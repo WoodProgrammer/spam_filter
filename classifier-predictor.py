@@ -15,9 +15,7 @@ def dict_creator_miner(file_url):
         content = f.readlines()
 
     for line in content:
-
         for key in word_dict:
-            else:
                 money_match=re.search( r"{0}".format(key), line, re.M|re.I)
                 if money_match:
                     word_dict[key]+=1
@@ -49,16 +47,32 @@ X , Y = get_spam_stat()
 clf = GaussianNB()
 
 clf.fit(X, Y)
+answers_of_filter=[]
 
-x=np.array(dict_creator_miner("example.txt"))
-print x
-print(clf.predict([x]))
+for i in range(1,1000):
+
+    x=np.array(dict_creator_miner("CSDMC2010_SPAM/CSDMC2010_SPAM/TRAINING/TR_{0}.eml".format(i)))
+
+    answers_of_filter.append(clf.predict([x]))
+
+for i in range(10):
+    print answers_of_filter[i]
+t=0
+x=pd.read_csv("spam_label.csv")
+accuracy=0
+
+for i in x["stat"]:
+    q=i
+    if q==answers_of_filter[t]:
+        accuracy+=1
+    if t==10:
+        break
+    t+=1
+print accuracy
 
 
 '''
 clf_pf = GaussianNB()
-
 clf_pf.partial_fit(X, Y, np.unique(Y))
-
 print(clf_pf.predict([[-0.8, -1]]))
 '''
