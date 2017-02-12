@@ -11,7 +11,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.cross_validation import train_test_split
 import numpy as np
 from sklearn.naive_bayes import MultinomialNB
-
+from sklearn import metrics
 
 
 cols=["label","message"]
@@ -69,4 +69,17 @@ token_counts['spam'] = token_counts.spam + 1
 
 token_counts['spam_ratio'] = token_counts.spam / token_counts.ham
 #print token_counts.sort('spam_ratio')
-print vect.transform(X_mail_train)
+#print vect.transform(X_mail_train)
+
+y_label=mail_datas['label']
+X_mail_train,X_mail_tester,y_mail_train,y_mail_tester=train_test_split(X_mail,y_label,random_state=1)
+
+mnb=MultinomialNB()
+vect.fit(X_mail_train)
+X_mail_train_matris=vect.fit_transform(X_mail_train)
+
+#print X_mail_train_matris
+mnb.fit(X_mail_train_matris.toarray(),y_mail_train)
+X_test_dtm = vect.transform(X_mail_tester)
+predicted_classes=mnb.predict(X_test_dtm)
+print metrics.accuracy_score(y_mail_tester,predicted_classes)
