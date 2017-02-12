@@ -72,6 +72,8 @@ token_counts['spam_ratio'] = token_counts.spam / token_counts.ham
 #print vect.transform(X_mail_train)
 
 y_label=mail_datas['label']
+
+
 X_mail_train,X_mail_tester,y_mail_train,y_mail_tester=train_test_split(X_mail,y_label,random_state=1)
 
 mnb=MultinomialNB()
@@ -85,9 +87,9 @@ X_mail_train_matris=vect.fit_transform(X_mail_train)
 mnb.fit(X_mail_train_matris.toarray(),y_mail_train)
 
 X_test_dtm = vect.transform(X_mail_tester)
-
+#X_test_os  = vect.transform()
 print X_test_dtm
 
-#print mnb.predict(out_of_sample_data)
 predicted_classes=mnb.predict(X_test_dtm)
-print metrics.accuracy_score(y_mail_tester,predicted_classes)
+print X_test_dtm
+#print metrics.accuracy_score(y_mail_tester,predicted_classes)
