@@ -10,6 +10,7 @@ x_train=vect.fit(x)
 data=vect.fit_transform(x)
 
 print x
+print data.toarray()
 mnba.fit(data.toarray(),y)
 print mnba.predict(data[0])
 '''

@@ -87,9 +87,11 @@ X_mail_train_matris=vect.fit_transform(X_mail_train)
 mnb.fit(X_mail_train_matris.toarray(),y_mail_train)
 
 X_test_dtm = vect.transform(X_mail_tester)
+
 #X_test_os  = vect.transform()
-print X_test_dtm
+
 
 predicted_classes=mnb.predict(X_test_dtm)
-print X_test_dtm
-#print metrics.accuracy_score(y_mail_tester,predicted_classes)
+
+
+ #print metrics.accuracy_score(y_mail_tester,predicted_classes)
